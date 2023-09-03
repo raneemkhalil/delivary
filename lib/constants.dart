@@ -1,0 +1,50 @@
+import 'package:delivary/models.dart';
+
+
+List<Menues> listOfMenues = const [
+  Menues(title: 'Burger', pathImage: 'assets/images/burger.png'),
+  Menues(title: 'Pizza', pathImage: 'assets/images/pizza.png'),
+  Menues(title: 'Pasta', pathImage: 'assets/images/pasta.png'),
+  Menues(title: 'Chicken', pathImage: 'assets/images/chicken.png'),
+  Menues(title: 'Drinks', pathImage: 'assets/images/drinks.png'),
+  Menues(title: 'Beef', pathImage: 'assets/images/beef.png')
+];
+
+List <FoodItems> foodItems = [
+  FoodItems(id: 1, name: 'Beef Burger', pathImage: 'assets/images/beef-burger.webp',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Burger', isFavorite: false),
+  FoodItems(id: 2, name: 'Chicken Burger', pathImage: 'assets/images/chicken-burger.webp',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Burger', isFavorite: false),
+  FoodItems(id: 3, name: 'Vegetable Burge', pathImage: 'assets/images/food-vegetable-burger.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Burger', isFavorite: false),
+  FoodItems(id: 4, name: 'Gourmet Burger', pathImage: 'assets/images/gourmet-burger.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Burger', isFavorite: false),
+  FoodItems(id: 5, name: 'Sauce Burger', pathImage: 'assets/images/sauce-burger.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Burger', isFavorite: false),
+  FoodItems(id: 6, name: 'Tofu Burger', pathImage: 'assets/images/Tofu-Burger.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Burger', isFavorite: false),
+  FoodItems(id: 7, name: 'NewYork Pizza', pathImage: 'assets/images/new-york-pizza.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Pizza', isFavorite: false),
+  FoodItems(id: 8, name: 'Gourmet Pizza', pathImage: 'assets/images/gourmet-pizza.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Pizza', isFavorite: false),
+  FoodItems(id: 9, name: 'Italian Pizza', pathImage: 'assets/images/italian-pizza.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Pizza', isFavorite: false),
+  FoodItems(id: 10, name: 'Sicilian Pizza Italian', pathImage: 'assets/images/Sicilian-pizza-talian.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Pizza', isFavorite: false),
+  FoodItems(id: 11, name: 'Spaghetti Meal', pathImage: 'assets/images/spaghetti-meal.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Pasta', isFavorite: false),
+  FoodItems(id: 12, name: 'White Sauce', pathImage: 'assets/images/white-sauce.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Pasta', isFavorite: false),
+  FoodItems(id: 13, name: 'Southern Fried', pathImage: 'assets/images/southern-fried-chicken.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Chicken', isFavorite: false),
+  FoodItems(id: 14, name: 'Crispy Fried', pathImage: 'assets/images/Crispy-Fried.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Chicken', isFavorite: false),
+  FoodItems(id: 15, name: 'Grilled Chicken', pathImage: 'assets/images/grilled-chicken.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Chicken', isFavorite: false),
+  FoodItems(id: 16, name: 'Cold Brew Coffee', pathImage: 'assets/images/fresh-cold-brew-coffee.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Drinks', isFavorite: false),
+  FoodItems(id: 17, name: 'Orange Juice', pathImage: 'assets/images/Orangejuice.webp',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Drinks', isFavorite: false),
+  FoodItems(id: 18, name: 'Steak', pathImage: 'assets/images/steak-food.png',
+    estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Beef', isFavorite: false),
+  ];
