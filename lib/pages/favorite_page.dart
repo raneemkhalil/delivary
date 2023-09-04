@@ -12,14 +12,12 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
 
   late int currentIndex;
-  late List<FoodItems> favoritesFood;
+  late List<FoodItem> favoritesFood;
 
   @override
   void initState() {
     super.initState();
     favoritesFood = foodItems.where((item) => item.getFavorite()).toList();
-    // currentIndex = -1; 
-    // empty = favoritesFood.isEmpty;
   }
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,7 @@ class _FavoritePageState extends State<FavoritePage> {
                   trailing: IconButton(icon: Icon(favoritesFood[index].getFavorite() ? Icons.favorite : Icons.favorite_outline, color: Colors.deepOrangeAccent,),
                   onPressed: (){
                     setState(() {
-                      FoodItems getItem = foodItems.firstWhere((foodItem) => favoritesFood[index].id == foodItem.id);
+                      FoodItem getItem = foodItems.firstWhere((foodItem) => favoritesFood[index].id == foodItem.id);
                       int naturalIndex = foodItems.indexOf(getItem);
                       foodItems[naturalIndex].setFavorite = !foodItems[naturalIndex].getFavorite();
                       favoritesFood = favoritesFood.where((item) => item.getFavorite()).toList();

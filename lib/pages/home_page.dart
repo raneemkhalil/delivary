@@ -1,3 +1,4 @@
+import 'package:delivary/pages/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:delivary/constants.dart';
 import 'package:delivary/models.dart';
@@ -14,11 +15,13 @@ class _HomePageState extends State<HomePage> {
 
 
   late int currentIndex;
-  late List<FoodItems> filterdCategory;
+  late List<FoodItem> filterdCategory;
   
   @override
   void initState() {
     super.initState();
+    print('im home state');
+    
     filterdCategory = foodItems;
     currentIndex = -1;
   }
@@ -174,72 +177,81 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: filterdCategory.length,
-                  itemBuilder: ((context, index) => Card(
-                    color: Colors.white,
-                    child: Stack(
-                      children: [
-                        Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 120,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    filterdCategory[index].pathImage,
-                                    height: 103.2,
-                                    width: 120,
+                  itemBuilder: ((context, index) => InkWell(
+                    onTap: () async {
+                      await Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProductDetails(productItem:filterdCategory[index])));
+                      if (!mounted) return;
+                      setState(() {
+
+                      });
+                    },
+                    child: Card(
+                      color: Colors.white,
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 120,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.asset(
+                                      filterdCategory[index].pathImage,
+                                      height: 103.2,
+                                      width: 120,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 12),
-                              Text(
-                                filterdCategory[index].name,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold
+                                const SizedBox(height: 12),
+                                Text(
+                                  filterdCategory[index].name,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                '${filterdCategory[index].estimatedTime} Min  |  ${filterdCategory[index].frequencyOfSelling} Sell',
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  color: Color.fromARGB(255, 139, 139, 139),
+                                const SizedBox(height: 4),
+                                Text(
+                                  '${filterdCategory[index].estimatedTime} Min  |  ${filterdCategory[index].frequencyOfSelling} Sell',
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    color: Color.fromARGB(255, 139, 139, 139),
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                '\$ ${filterdCategory[index].price}',
-                                style: const TextStyle(
-                                    fontSize: 20,
-                                    color: Color.fromARGB(255, 235, 112, 30),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                          
-                            ],
+                                Text(
+                                  '\$ ${filterdCategory[index].price}',
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      color: Color.fromARGB(255, 235, 112, 30),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                            
+                              ],
+                            ),
                           ),
-                        ),
-                        PositionedDirectional(
-                          child: IconButton(
-                            onPressed: (){
-                              setState(() {
-                                filterdCategory[index].setFavorite = !filterdCategory[index].getFavorite();
-                                FoodItems getItem = foodItems.firstWhere((foodItem) => filterdCategory[index].id == foodItem.id);
-                                int naturalIndex = foodItems.indexOf(getItem);
-                                foodItems[naturalIndex] = filterdCategory[index];
-                              });
-                            },
-                            icon: Icon(
-                              filterdCategory[index].getFavorite() ? Icons.favorite : Icons.favorite_outline,
-                              color: Colors.deepOrangeAccent,
-                            )
-                          ),
-                          top: 0,
-                          end: 0,
-                        )
-                      ]
+                          PositionedDirectional(
+                            top: 0,
+                            end: 0,
+                            child: IconButton(
+                              onPressed: (){
+                                setState(() {
+                                  filterdCategory[index].setFavorite = !filterdCategory[index].getFavorite();
+                                  FoodItem getItem = foodItems.firstWhere((foodItem) => filterdCategory[index].id == foodItem.id);
+                                  int naturalIndex = foodItems.indexOf(getItem);
+                                  foodItems[naturalIndex] = filterdCategory[index];
+                                });
+                              },
+                              icon: Icon(
+                                filterdCategory[index].getFavorite() ? Icons.favorite : Icons.favorite_outline,
+                                color: Colors.deepOrangeAccent,
+                              )
+                            ),
+                          )
+                        ]
+                      ),
                     ),
                   )),
                 ),
@@ -248,73 +260,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // floatingActionButton: SizedBox(
-      //   height: 70,
-      //   width: 90,
-      //   child: FloatingActionButton(
-      //     shape: const CircleBorder(),
-      //     backgroundColor: Colors.deepOrangeAccent,
-      //     onPressed: () {},
-      //     child: const Icon(
-      //       Icons.shopping_cart_outlined,
-      //       color: Colors.white,
-      //       size: 30,
-      //     ),
-      //   ),
-      // ),
-      // bottomNavigationBar: BottomAppBar(
-      //   notchMargin: 0.0,
-      //   height: 50,
-      //   color: Colors.white,
-      //   shape: const CircularNotchedRectangle(),
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //     children: [
-      //       Row(
-      //         children: [
-      //           Padding(
-      //             padding: const EdgeInsetsDirectional.only(end: 20),
-      //             child: IconButton(
-      //               onPressed: () {},
-      //               icon: const Icon(
-      //                 Icons.home,
-      //                 color: Colors.black,
-      //               ),
-      //             ),
-      //           ),
-      //           IconButton(
-      //             onPressed: () {},
-      //             icon: const Icon(
-      //               Icons.payment,
-      //               color: Colors.black,
-      //             ),
-      //           ), 
-      //         ],
-      //       ),
-      //       Row(
-      //         children: [
-      //           IconButton(
-      //             onPressed: () {},
-      //             icon: const Icon(
-      //               Icons.favorite,
-      //               color: Colors.black,
-      //             ),
-      //           ),
-      //           Padding(
-      //             padding: const EdgeInsetsDirectional.only(start: 20),
-      //             child: IconButton(
-      //               onPressed: () {},
-      //               icon: const Icon(
-      //                 Icons.person,
-      //                 color: Colors.black,
-      //               ),
-      //             ),
-      //           ),
-      //         ],
-      //       )
-      //     ],
-      //   )),
     );
   }
 }
