@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    print('im home state');
     
     filterdCategory = foodItems;
     currentIndex = -1;

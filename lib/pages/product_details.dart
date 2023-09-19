@@ -1,4 +1,5 @@
 import 'package:delivary/models.dart';
+import 'package:delivary/pages/orders_page.dart';
 import 'package:flutter/material.dart';
 import 'package:delivary/constants.dart';
 import 'package:delivary/widgets/product_details_property.dart';
@@ -211,7 +212,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showAlertDialog(context);
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.deepOrange,
                         foregroundColor: Colors.white,
@@ -228,6 +231,55 @@ class _ProductDetailsState extends State<ProductDetails> {
           ],
         ),
       ),
+    );
+  }
+  showAlertDialog(BuildContext context) {
+
+    Widget cancelButton = TextButton(
+      child: const Text("Cancel", style: TextStyle(color: Colors.deepOrange),),
+      onPressed:  () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = TextButton(
+      child: const Text("Continue", style: TextStyle(color: Colors.deepOrange),),
+      onPressed:  () {
+        orderedFood.add(Order(item: widget.productItem, quantity: quantity));
+        Navigator.of(context).pop();
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 20,
+               left: MediaQuery.of(context).size.width / 20,
+               right: MediaQuery.of(context).size.width / 20
+              ),
+              behavior: SnackBarBehavior.floating,
+              content: const Text('the food is added to orders page!'),
+            )
+          );
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      shadowColor: Colors.deepOrange,
+      backgroundColor: Colors.white,
+      icon: const Icon(Icons.info_outline),
+      iconColor: Colors.red,
+      content: const Text("Would you like to continue?", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+      ),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }

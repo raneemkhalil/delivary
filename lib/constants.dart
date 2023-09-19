@@ -60,3 +60,22 @@ List <FoodItem> foodItems = [
     estimatedTime: '30', frequencyOfSelling: 120, price: 5.40, category: 'Beef', isFavorite: false,
     size: 'Medium', calories: '500 KCal', cooking: '5-10 Mins', description: 'fregtrvrthtvwefevcrvbjhghjghfjhdftryecrtxerwzxrcfjvygoyubdthnhj'),
   ];
+
+
+List<Coupons> coupons = [
+  Coupons(
+    id: '1',
+    name: 'Employee coupons',
+    value: 1,
+  ),
+  Coupons(
+    id: '2',
+    name: 'Tariq coupons',
+    value: 2,
+  ),
+];
+
+
+List<Order> orderedFood = [
+  
+];
