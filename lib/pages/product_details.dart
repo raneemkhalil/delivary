@@ -1,5 +1,4 @@
 import 'package:delivary/models.dart';
-import 'package:delivary/pages/orders_page.dart';
 import 'package:flutter/material.dart';
 import 'package:delivary/constants.dart';
 import 'package:delivary/widgets/product_details_property.dart';
