@@ -22,6 +22,9 @@ class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Favorite Page"),
+      ),
       body: favoritesFood.isEmpty ? const Center(
         child: Text(
           'Empty...',
